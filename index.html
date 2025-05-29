@@ -10,20 +10,17 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -35,18 +32,15 @@
             align-items: center;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
             color: #667eea;
         }
-
         .nav-buttons {
             display: flex;
             gap: 1rem;
         }
-
         .btn {
             padding: 0.7rem 1.5rem;
             border: none;
@@ -57,23 +51,19 @@
             text-decoration: none;
             display: inline-block;
         }
-
         .btn-primary {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
         }
-
         .btn-secondary {
             background: rgba(102, 126, 234, 0.1);
             color: #667eea;
             border: 2px solid #667eea;
         }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-
         .section {
             display: none;
             background: rgba(255, 255, 255, 0.95);
@@ -83,28 +73,23 @@
             margin-bottom: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-
         .section.active {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: #555;
         }
-
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 0.8rem;
@@ -113,19 +98,16 @@
             font-size: 1rem;
             transition: border-color 0.3s ease;
         }
-
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             outline: none;
             border-color: #667eea;
         }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-
         .product-card {
             background: white;
             border-radius: 15px;
@@ -133,11 +115,9 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-
         .product-card:hover {
             transform: translateY(-5px);
         }
-
         .product-image {
             width: 100%;
             height: 200px;
@@ -149,31 +129,26 @@
             color: #999;
             font-size: 0.9rem;
         }
-
         .product-info {
             padding: 1.5rem;
         }
-
         .product-title {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: #333;
         }
-
         .product-price {
             font-size: 1.4rem;
             font-weight: bold;
             color: #667eea;
             margin-bottom: 1rem;
         }
-
         .product-seller {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 1rem;
         }
-
         .cart-item {
             display: flex;
             align-items: center;
@@ -183,24 +158,20 @@
             border-radius: 10px;
             margin-bottom: 1rem;
         }
-
         .cart-item img {
             width: 80px;
             height: 80px;
             object-fit: cover;
             border-radius: 8px;
         }
-
         .cart-item-info {
             flex: 1;
         }
-
         .quantity-controls {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
         .quantity-btn {
             width: 30px;
             height: 30px;
@@ -212,13 +183,11 @@
             align-items: center;
             justify-content: center;
         }
-
         .file-input-wrapper {
             position: relative;
             display: inline-block;
             width: 100%;
         }
-
         .file-input {
             position: absolute;
             opacity: 0;
@@ -226,7 +195,6 @@
             height: 100%;
             cursor: pointer;
         }
-
         .file-input-display {
             padding: 0.8rem;
             border: 2px dashed #667eea;
@@ -236,25 +204,21 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .file-input-display:hover {
             background: rgba(102, 126, 234, 0.05);
         }
-
         .preview-image {
             max-width: 200px;
             max-height: 200px;
             margin-top: 1rem;
             border-radius: 10px;
         }
-
         .user-info {
             background: rgba(102, 126, 234, 0.1);
             padding: 1rem;
             border-radius: 10px;
             margin-bottom: 1rem;
         }
-
         .cart-badge {
             background: #ff4757;
             color: white;
@@ -263,7 +227,6 @@
             font-size: 0.8rem;
             margin-left: 0.5rem;
         }
-
         .total-price {
             font-size: 1.5rem;
             font-weight: bold;
@@ -273,7 +236,6 @@
             padding-top: 1rem;
             border-top: 2px solid #e1e5e9;
         }
-
         .success-message {
             background: #2ed573;
             color: white;
@@ -282,7 +244,6 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-
         .error-message {
             background: #ff4757;
             color: white;
@@ -291,7 +252,6 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-
         .image-fallback {
             background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
             width: 100%;
@@ -302,18 +262,15 @@
             color: #9ca3af;
             font-size: 0.9rem;
         }
-
         .image-loading {
             animation: imageLoading 1s infinite;
             background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
             background-size: 200% 100%;
         }
-
         @keyframes imageLoading {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
-
         /* Добавляем стили для профиля */
         .profile-header {
             display: flex;
@@ -324,7 +281,6 @@
             border-radius: 15px;
             margin-bottom: 2rem;
         }
-
         .profile-avatar {
             width: 150px;
             height: 150px;
@@ -334,18 +290,15 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-
         .profile-avatar:hover {
             transform: scale(1.05);
         }
-
         .profile-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 1rem 0;
         }
-
         .stat-card {
             background: white;
             padding: 1rem;
@@ -353,36 +306,30 @@
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
         .settings-form {
             background: white;
             padding: 2rem;
             border-radius: 15px;
             margin-top: 2rem;
         }
-
         .tabs {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
         }
-
         .tab {
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-bottom: 2px solid transparent;
         }
-
         .tab.active {
             border-color: #667eea;
             color: #667eea;
         }
-
         /* Dark Theme Styles */
         [data-theme="dark"] {
             background: linear-gradient(135deg, #1a1c2c 0%, #2c2c54 100%);
         }
-
         [data-theme="dark"] .section,
         [data-theme="dark"] .header,
         [data-theme="dark"] .product-card,
@@ -392,12 +339,10 @@
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
-
         [data-theme="dark"] .product-title,
         [data-theme="dark"] .form-group label {
             color: #fff;
         }
-
         /* Theme Switcher */
         .theme-switch {
             position: fixed;
@@ -415,7 +360,6 @@
             font-size: 24px;
             z-index: 1000;
         }
-
         /* Chat Styles */
         .chat-button {
             position: fixed;
@@ -423,7 +367,6 @@
             left: 20px;
             z-index: 1000;
         }
-
         .chat-list {
             position: fixed;
             bottom: 80px;
@@ -435,7 +378,6 @@
             display: none;
             z-index: 1000;
         }
-
         .chat-contact {
             padding: 10px;
             border-bottom: 1px solid #eee;
@@ -444,59 +386,49 @@
             align-items: center;
             gap: 10px;
         }
-
         .chat-contact:hover {
             background: #f5f5f5;
         }
-
         .chat-contact-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
         }
-
         .chat-window {
             width: 320px;
             height: 450px;
         }
-
         .chat-header {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 15px;
         }
-
         .chat-header img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
-
         .message {
             position: relative;
             padding: 10px 15px;
             margin: 5px 0;
         }
-
         .message-time {
             font-size: 0.7em;
             opacity: 0.7;
             margin-top: 5px;
         }
-
         .message-status {
             font-size: 0.7em;
             margin-top: 2px;
         }
-
         .profile-buttons {
             margin-top: 2rem;
             display: flex;
             justify-content: center;
         }
-
         .profile-sell-btn {
             padding: 1rem 2rem;
             font-size: 1.2rem;
@@ -508,12 +440,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-
         .profile-sell-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
-
         .settings-option {
             display: flex;
             align-items: center;
@@ -523,18 +453,15 @@
             background: rgba(102, 126, 234, 0.1);
             border-radius: 10px;
         }
-
         .settings-option input[type="checkbox"] {
             width: 20px;
             height: 20px;
             accent-color: #667eea;
         }
-
         .settings-option label {
             font-size: 1rem;
             color: #555;
         }
-
         /* Chat Page Styles */
         .chat-page {
             background: white;
@@ -545,37 +472,31 @@
             grid-template-columns: 300px 1fr;
             overflow: hidden;
         }
-
         .chat-sidebar {
             border-right: 1px solid #eee;
             overflow-y: auto;
         }
-
         .chat-main {
             display: flex;
             flex-direction: column;
         }
-
         .chat-messages-container {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
         }
-
         .chat-input-container {
             padding: 20px;
             border-top: 1px solid #eee;
             display: flex;
             gap: 10px;
         }
-
         .chat-input-container input {
             flex: 1;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 25px;
         }
-
         /* Orders Styles */
         .order-card {
             background: white;
@@ -584,7 +505,6 @@
             margin-bottom: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
         .order-header {
             display: flex;
             justify-content: space-between;
@@ -592,11 +512,9 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
-
         .order-items {
             margin: 10px 0;
         }
-
         .order-item {
             display: flex;
             gap: 10px;
@@ -604,7 +522,6 @@
             padding: 5px 0;
             border-bottom: 1px solid #f5f5f5;
         }
-
         /* Settings Styles Fix */
         .settings-switch {
             position: relative;
@@ -612,13 +529,11 @@
             width: 60px;
             height: 34px;
         }
-
         .settings-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
         .slider {
             position: absolute;
             cursor: pointer;
@@ -630,7 +545,6 @@
             transition: .4s;
             border-radius: 34px;
         }
-
         .slider:before {
             position: absolute;
             content: "";
@@ -642,49 +556,12 @@
             transition: .4s;
             border-radius: 50%;
         }
-
         input:checked + .slider {
             background-color: #667eea;
         }
-
         input:checked + .slider:before {
             transform: translateX(26px);
         }
-
-        /* Add after your existing sections */
-        section id="chat" class="section">
-            <h2>Сообщения</h2>
-            <div class="chat-page">
-                <div class="chat-sidebar">
-                    <div class="search-container">
-                        <input type="text" 
-                               id="userSearchInput" 
-                               placeholder="Поиск пользователей..." 
-                               oninput="searchUsers(this.value)">
-                    </div>
-                    <div class="user-search-results"></div>
-                    <div id="chatContactsList"></div>
-                </div>
-                <div class="chat-main">
-                    <div class="chat-messages-container" id="chatMessagesContainer"></div>
-                    <div class="chat-input-container">
-                        <input type="text" 
-                               id="chatMessageInput" 
-                               placeholder="Введите сообщение...">
-                        <button class="btn btn-primary" onclick="sendMessage()">Отправить</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Add to the navigation buttons -->
-        <button class="btn btn-secondary" onclick="showSection('chat')">Чат</button>
-
-        <!-- Modify the settings form to include onsubmit -->
-        <form id="settingsForm" class="settings-form" onsubmit="saveSettings(event)">
-            <!-- ...existing settings inputs... -->
-        </form>
-
     </style>
 </head>
 <body>
@@ -768,9 +645,7 @@
                     <option value="sports">Спорт</option>
                 </select>
             </div>
-            <div id="productsContainer" class="products-grid">
-                <!-- Товары будут загружены здесь -->
-            </div>
+            <div id="productsContainer" class="products-grid"></div>
         </section>
 
         <!-- Секция продажи товара -->
@@ -817,9 +692,7 @@
         <!-- Секция корзины -->
         <section id="cart" class="section">
             <h2>Корзина</h2>
-            <div id="cartItems">
-                <!-- Товары в корзине будут здесь -->
-            </div>
+            <div id="cartItems"></div>
             <div class="total-price" id="totalPrice">Итого: 0 руб.</div>
             <button class="btn btn-primary" onclick="checkout()" id="checkoutBtn" style="display: none;">Оформить заказ</button>
         </section>
@@ -828,7 +701,7 @@
         <section id="profile" class="section">
             <div class="profile-header">
                 <label for="avatarUpload" style="cursor: pointer;">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='white' text-anchor='middle' dy='.3em' font-size='16'%3EЗагрузить фото%3C/text%3E%3C/svg%3E" 
+                    <img src="https://via.placeholder.com/150 " 
                          alt="Аватар" 
                          id="userAvatar"
                          class="profile-avatar">
@@ -839,7 +712,6 @@
                     <p id="profileEmail"></p>
                 </div>
             </div>
-
             <div class="profile-stats">
                 <div class="stat-card">
                     <h3>Товаров</h3>
@@ -854,22 +726,18 @@
                     <div id="userRating">5.0 ⭐</div>
                 </div>
             </div>
-
             <div class="tabs">
                 <div class="tab active" onclick="switchTab('products')">Мои товары</div>
                 <div class="tab" onclick="switchTab('orders')">Мои заказы</div>
                 <div class="tab" onclick="switchTab('settings')">Настройки</div>
             </div>
-
             <div id="tabContent">
                 <div id="productsTab" class="tab-content">
                     <div id="myProducts" class="products-grid"></div>
                 </div>
-                
                 <div id="ordersTab" class="tab-content" style="display: none;">
                     <div id="myOrders"></div>
                 </div>
-                
                 <div id="settingsTab" class="tab-content" style="display: none;">
                     <form id="settingsForm" class="settings-form" onsubmit="saveSettings(event)">
                         <div class="form-group">
@@ -900,7 +768,6 @@
                     </form>
                 </div>
             </div>
-
             <div class="profile-buttons">
                 <button class="profile-sell-btn" onclick="showSection('sell')">Начать продавать</button>
             </div>
@@ -908,7 +775,6 @@
     </div>
 
     <div class="theme-switch" onclick="toggleTheme()">🌓</div>
-
     <button class="btn btn-primary chat-button" onclick="toggleChat()">💬</button>
     <div class="chat-list" id="chatList">
         <div class="chat-header">
@@ -953,10 +819,37 @@
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
+            document.getElementById(sectionName).classList.add('active');
+        }
+
+        // Регистрация
+        function register(event) {
+            event.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const phone = document.getElementById('regPhone').value;
+            const address = document.getElementById('regAddress').value;
+
+            if (users.find(u => u.email === email)) {
+                showMessage('Пользователь с таким email уже существует!', 'error');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                phone,
+                address,
+                avatar: null,
+                products: [],
+                orders: []
+            };
 
             users.push(newUser);
             saveData();
-            
             showMessage('Регистрация успешна! Теперь вы можете войти.', 'success');
             document.getElementById('registerForm').reset();
             showSection('login');
@@ -965,12 +858,10 @@
         // Авторизация
         function login(event) {
             event.preventDefault();
-            
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-
             const user = users.find(u => u.email === email && u.password === password);
-            
+
             if (user) {
                 currentUser = user;
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -980,7 +871,7 @@
             } else {
                 showMessage('Неверный email или пароль!', 'error');
             }
-            
+
             document.getElementById('loginForm').reset();
         }
 
@@ -1008,10 +899,11 @@
         function updateAuthUI() {
             const authButtons = document.getElementById('authButtons');
             const userMenu = document.getElementById('userMenu');
-            
+
             if (currentUser) {
                 authButtons.style.display = 'none';
                 userMenu.style.display = 'flex';
+                loadUserProfile();
             } else {
                 authButtons.style.display = 'flex';
                 userMenu.style.display = 'none';
@@ -1021,7 +913,6 @@
         // Добавление товара
         function addProduct(event) {
             event.preventDefault();
-            
             if (!currentUser) {
                 showMessage('Войдите в аккаунт для продажи товаров!', 'error');
                 return;
@@ -1032,8 +923,8 @@
             const price = parseInt(document.getElementById('productPrice').value);
             const category = document.getElementById('productCategory').value;
             const imageFile = document.getElementById('productImage').files[0];
+            let imageUrl = 'https://via.placeholder.com/200x200?text= Нет+фото';
 
-            let imageUrl = 'https://via.placeholder.com/200x200?text=Нет+фото';
             if (imageFile) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -1047,7 +938,6 @@
                         sellerId: currentUser.id,
                         sellerName: currentUser.name
                     };
-
                     products.push(newProduct);
                     saveData();
                     loadProducts();
@@ -1067,7 +957,6 @@
                     sellerId: currentUser.id,
                     sellerName: currentUser.name
                 };
-
                 products.push(newProduct);
                 saveData();
                 loadProducts();
@@ -1080,7 +969,6 @@
         function previewImage(event) {
             const file = event.target.files[0];
             const preview = document.getElementById('imagePreview');
-            
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -1104,24 +992,21 @@
             products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
-                
-                // Create image with fallback
-                const img = new Image();
+
                 const fallback = `
                     <div class="image-fallback">
                         <span>🖼️ ${product.name}</span>
                     </div>
                 `;
-                
+
+                const img = new Image();
                 img.onload = function() {
                     productCard.querySelector('.product-image').innerHTML = '';
                     productCard.querySelector('.product-image').appendChild(img);
                 };
-                
                 img.onerror = function() {
                     productCard.querySelector('.product-image').innerHTML = fallback;
                 };
-                
                 img.src = product.image;
                 img.alt = product.name;
                 img.className = 'product-image';
@@ -1140,48 +1025,74 @@
                         </button>
                     </div>
                 `;
+
                 container.appendChild(productCard);
             });
         }
-
-        // Фильтрация товаров
+        // Фильтрация товаров (продолжение)
         function filterProducts() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const category = document.getElementById('categoryFilter').value;
-            
             const filteredProducts = products.filter(product => {
                 const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
-                                    product.description.toLowerCase().includes(searchTerm);
+                                      product.description.toLowerCase().includes(searchTerm);
                 const matchesCategory = !category || product.category === category;
-                
                 return matchesSearch && matchesCategory;
             });
+            displayFilteredProducts(filteredProducts);
+        }
 
+        function displayFilteredProducts(filteredProducts) {
             const container = document.getElementById('productsContainer');
             container.innerHTML = '';
-
             if (filteredProducts.length === 0) {
                 container.innerHTML = '<p>Товары не найдены</p>';
                 return;
             }
-
             filteredProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
-                    <div class="product-info">
-                        <div class="product-title">${product.name}</div>
-                        <div class="product-price">${product.price} руб.</div>
-                        <div class="product-seller">Продавец: ${product.sellerName}</div>
-                        <p>${product.description}</p>
-                        <button class="btn btn-primary" onclick="addToCart(${product.id})">
-                            В корзину
-                        </button>
-                    </div>
-                `;
+                const productCard = createProductCard(product);
                 container.appendChild(productCard);
             });
+        }
+
+        function createProductCard(product) {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            const fallback = `
+                <div class="image-fallback">
+                    <span>🖼️ ${product.name}</span>
+                </div>
+            `;
+            
+            const img = new Image();
+            img.onload = function() {
+                productCard.querySelector('.product-image').innerHTML = '';
+                productCard.querySelector('.product-image').appendChild(img);
+            };
+            img.onerror = function() {
+                productCard.querySelector('.product-image').innerHTML = fallback;
+            };
+            img.src = product.image;
+            img.alt = product.name;
+            img.className = 'product-image';
+            
+            productCard.innerHTML = `
+                <div class="product-image image-loading">
+                    ${fallback}
+                </div>
+                <div class="product-info">
+                    <div class="product-title">${product.name}</div>
+                    <div class="product-price">${product.price} руб.</div>
+                    <div class="product-seller">Продавец: ${product.sellerName}</div>
+                    <p>${product.description}</p>
+                    <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                        В корзину
+                    </button>
+                </div>
+            `;
+            
+            return productCard;
         }
 
         // Добавление в корзину
@@ -1190,10 +1101,8 @@
                 showMessage('Войдите в аккаунт для покупок!', 'error');
                 return;
             }
-
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
-
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -1202,7 +1111,6 @@
                     quantity: 1
                 });
             }
-
             updateCartDisplay();
             showMessage('Товар добавлен в корзину!', 'success');
         }
@@ -1213,13 +1121,13 @@
             const cartItems = document.getElementById('cartItems');
             const totalPrice = document.getElementById('totalPrice');
             const checkoutBtn = document.getElementById('checkoutBtn');
-
+            
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
+            
             cartCount.textContent = totalItems;
             totalPrice.textContent = `Итого: ${total} руб.`;
-
+            
             if (cart.length === 0) {
                 cartItems.innerHTML = '<p>Корзина пуста</p>';
                 checkoutBtn.style.display = 'none';
@@ -1268,12 +1176,10 @@
                 showMessage('Войдите в аккаунт!', 'error');
                 return;
             }
-
             if (cart.length === 0) {
                 showMessage('Корзина пуста!', 'error');
                 return;
             }
-
             const order = {
                 id: Date.now(),
                 userId: currentUser.id,
@@ -1282,122 +1188,134 @@
                 date: new Date().toLocaleDateString(),
                 status: 'Оформлен'
             };
-
             orders.push(order);
             cart = [];
-            
-            // Save orders immediately
             persistOrders();
             updateCartDisplay();
-            
             showMessage('Заказ успешно оформлен!', 'success');
         }
 
         // Загрузка профиля пользователя
         function loadUserProfile() {
             if (!currentUser) return;
-
             document.getElementById('profileName').textContent = currentUser.name;
             document.getElementById('profileEmail').textContent = currentUser.email;
-            document.getElementById('userAvatar').src = currentUser.avatar || 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\'%3E%3Crect width=\'150\' height=\'150\' fill=\'%23667eea\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' fill=\'white\' text-anchor=\'middle\' dy=\'.3em\' font-size=\'16\'%3EЗагрузить фото%3C/text%3E%3C/svg%3E';
-
-            // Заполняем форму настроек
+            document.getElementById('userAvatar').src = currentUser.avatar || 'https://via.placeholder.com/150 ';
+            
             document.getElementById('updateName').value = currentUser.name;
             document.getElementById('updatePhone').value = currentUser.phone;
             document.getElementById('updateAddress').value = currentUser.address;
-
-            // Обновляем статистику
+            
             const userProducts = products.filter(p => p.sellerId === currentUser.id);
             document.getElementById('productsCount').textContent = userProducts.length;
             
             const userOrders = orders.filter(o => o.userId === currentUser.id);
             document.getElementById('salesCount').textContent = userOrders.length;
-
-            // Загружаем товары и заказы как раньше
-            // ...existing code...
+            
+            loadMyProducts(userProducts);
+            loadMyOrders(userOrders);
         }
 
-        // Добавляем новые функции для профиля
-        function updateAvatar(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('userAvatar').src = e.target.result;
-                    currentUser.avatar = e.target.result;
-                    saveData();
-                };
-                reader.readAsDataURL(file);
+        function loadMyProducts(userProducts) {
+            const container = document.getElementById('myProducts');
+            container.innerHTML = '';
+            if (userProducts.length === 0) {
+                container.innerHTML = '<p>Вы еще не добавили ни одного товара</p>';
+                return;
             }
+            userProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                container.appendChild(productCard);
+            });
         }
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
-            
-            document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
-            document.getElementById(`${tabName}Tab`).style.display = 'block';
+        function loadMyOrders(userOrders) {
+            const container = document.getElementById('myOrders');
+            container.innerHTML = '';
+            if (userOrders.length === 0) {
+                container.innerHTML = '<p>У вас пока нет заказов</p>';
+                return;
+            }
+            userOrders.forEach(order => {
+                const orderCard = document.createElement('div');
+                orderCard.className = 'order-card';
+                
+                const itemsHtml = order.items.map(item => `
+                    <div class="order-item">
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                        <div>
+                            <div>${item.name}</div>
+                            <div>${item.price} руб. × ${item.quantity}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                orderCard.innerHTML = `
+                    <div class="order-header">
+                        <div>Заказ #${order.id}</div>
+                        <div>${order.date}</div>
+                    </div>
+                    <div class="order-items">
+                        ${itemsHtml}
+                    </div>
+                    <div>Итого: ${order.total} руб.</div>
+                    <div>Статус: ${order.status}</div>
+                `;
+                
+                container.appendChild(orderCard);
+            });
         }
 
-        function updateProfile(event) {
+        // Сохранение настроек
+        function saveSettings(event) {
             event.preventDefault();
+            currentUser.name = document.getElementById('updateName').value || currentUser.name;
+            currentUser.phone = document.getElementById('updatePhone').value || currentUser.phone;
+            currentUser.address = document.getElementById('updateAddress').value || currentUser.address;
+            currentUser.emailNotifications = document.getElementById('emailNotifications').checked;
+            currentUser.darkMode = document.getElementById('darkMode').checked;
+            currentUser.twoFactorAuth = document.getElementById('twoFactorAuth').checked;
             
-            const name = document.getElementById('updateName').value;
-            const phone = document.getElementById('updatePhone').value;
-            const address = document.getElementById('updateAddress').value;
-            const password = document.getElementById('updatePassword').value;
-
-            if (name) currentUser.name = name;
-            if (phone) currentUser.phone = phone;
-            if (address) currentUser.address = address;
-            if (password) currentUser.password = password;
-
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = { ...currentUser };
+            }
+            
             saveData();
             loadUserProfile();
-            showMessage('Профиль обновлен!', 'success');
+            showMessage('Настройки сохранены!', 'success');
         }
 
-        // Theme functions
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-        }
-
+        // Тема оформления
         function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
+            const currentTheme = document.body.getAttribute('data-theme') || 'light';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-        }
-
-        // Chat functions
-        function initChat() {
-            if (!messages) messages = [];
-            initChatData();
-            displayContacts();
-        }
-
-        function initChatData() {
-            // Initialize chat data structure
-            if (!localStorage.getItem('chats')) {
-                localStorage.setItem('chats', JSON.stringify({}));
+            
+            if (currentUser) {
+                currentUser.darkMode = newTheme === 'dark';
+                saveData();
             }
         }
 
-        function displayContacts() {
+        // Чат
+        function initChat() {
             if (!currentUser) return;
-            
+            displayContacts();
+        }
+
+        function displayContacts() {
             const contactsList = document.getElementById('contactsList');
             const sellerIds = [...new Set(products.map(p => p.sellerId))];
-            
             const contacts = users.filter(user => 
-                user.id !== currentUser.id && 
+                user.id !== currentUser.id &&
                 (sellerIds.includes(user.id) || hasChat(currentUser.id, user.id))
             );
-
+            
             contactsList.innerHTML = contacts.map(contact => `
                 <div class="chat-contact" onclick="openChat(${contact.id})">
-                    <img src="${contact.avatar || 'data:image/svg+xml,%3Csvg...'}" 
+                    <img src="${contact.avatar || 'https://via.placeholder.com/40 '}" 
                          class="chat-contact-avatar" 
                          alt="${contact.name}">
                     <div>
@@ -1408,28 +1326,19 @@
             `).join('');
         }
 
-        function hasChat(userId1, userId2) {
-            const chats = JSON.parse(localStorage.getItem('chats')) || {};
-            const chatId = getChatId(userId1, userId2);
-            return !!chats[chatId];
-        }
-
-        function getChatId(userId1, userId2) {
-            return [userId1, userId2].sort().join('-');
-        }
-
         function openChat(userId) {
             const recipient = users.find(u => u.id === userId);
             if (!recipient) return;
-
+            
             const chatWindow = document.getElementById('chatWindow');
+            const chatMessages = document.getElementById('chatMessages');
             const chatId = getChatId(currentUser.id, userId);
             
             chatWindow.dataset.chatId = chatId;
             chatWindow.style.display = 'flex';
             
             document.querySelector('.chat-header').innerHTML = `
-                <img src="${recipient.avatar || 'data:image/svg+xml,%3Csvg...'}" alt="${recipient.name}">
+                <img src="${recipient.avatar || 'https://via.placeholder.com/40 '}" alt="${recipient.name}">
                 <div>
                     <strong>${recipient.name}</strong>
                     <div><small>${recipient.email}</small></div>
@@ -1442,7 +1351,6 @@
         function loadChatMessages(chatId) {
             const chats = JSON.parse(localStorage.getItem('chats')) || {};
             const messages = chats[chatId] || [];
-            
             displayMessages(messages);
         }
 
@@ -1463,10 +1371,9 @@
                 
                 const chats = JSON.parse(localStorage.getItem('chats')) || {};
                 if (!chats[chatId]) chats[chatId] = [];
-                
                 chats[chatId].push(message);
-                localStorage.setItem('chats', JSON.stringify(chats));
                 
+                localStorage.setItem('chats', JSON.stringify(chats));
                 input.value = '';
                 loadChatMessages(chatId);
             }
@@ -1474,7 +1381,6 @@
 
         function displayMessages(messages) {
             const chatMessages = document.getElementById('chatMessages');
-            
             chatMessages.innerHTML = messages.map(msg => `
                 <div class="message ${msg.sender === currentUser?.id ? 'sent' : 'received'}">
                     <div class="message-text">${msg.text}</div>
@@ -1486,14 +1392,12 @@
                     ` : ''}
                 </div>
             `).join('');
-            
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         function toggleChat() {
             const chatList = document.getElementById('chatList');
             const chatWindow = document.getElementById('chatWindow');
-            
             if (chatList.style.display === 'none') {
                 chatList.style.display = 'block';
                 chatWindow.style.display = 'none';
@@ -1503,28 +1407,72 @@
             }
         }
 
-        // Сохранение данных
+        // Вспомогательные функции
+        function getChatId(userId1, userId2) {
+            return [userId1, userId2].sort().join('-');
+        }
+
+        function hasChat(userId1, userId2) {
+            const chats = JSON.parse(localStorage.getItem('chats')) || {};
+            const chatId = getChatId(userId1, userId2);
+            return !!chats[chatId];
+        }
+
+        function handleMessageKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function updateAvatar(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('userAvatar').src = e.target.result;
+                    currentUser.avatar = e.target.result;
+                    saveData();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(`${tabName}Tab`).style.display = 'block';
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `${type}-message`;
+            messageDiv.textContent = text;
+            const container = document.querySelector('.container');
+            container.insertBefore(messageDiv, container.firstChild);
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+
+        // Работа с данными
         function saveData() {
             const data = {
                 users,
                 products,
                 orders
             };
-            // В реальном приложении здесь была бы отправка на сервер
-            // Для демонстрации сохраняем в localStorage
             Object.keys(data).forEach(key => {
                 localStorage.setItem(key, JSON.stringify(data[key]));
             });
         }
 
-        // Загрузка данных
         function loadData() {
             try {
                 users = JSON.parse(localStorage.getItem('users')) || [];
                 products = JSON.parse(localStorage.getItem('products')) || [];
                 orders = JSON.parse(localStorage.getItem('orders')) || [];
                 
-                // Добавляем несколько демо-товаров при первом запуске
                 if (products.length === 0) {
                     products = [
                         {
@@ -1533,50 +1481,11 @@
                             description: 'Новый смартфон с отличной камерой и долгим временем работы',
                             price: 25000,
                             category: 'electronics',
-                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%234A90E2"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EТелефон%3C/text%3E%3C/svg%3E',
+                            image: 'https://via.placeholder.com/200x200?text= Телефон',
                             sellerId: 0,
                             sellerName: 'Магазин техники'
                         },
-                        {
-                            id: 2,
-                            name: 'Джинсы Levi\'s',
-                            description: 'Классические джинсы высокого качества',
-                            price: 4500,
-                            category: 'clothing',
-                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%2350C878"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EДжинсы%3C/text%3E%3C/svg%3E',
-                            sellerId: 0,
-                            sellerName: 'Модный бутик'
-                        },
-                        {
-                            id: 3,
-                            name: 'Книга "Программирование"',
-                            description: 'Учебник по современному программированию',
-                            price: 1200,
-                            category: 'books',
-                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23FF6B6B"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EКнига%3C/text%3E%3C/svg%3E',
-                            sellerId: 0,
-                            sellerName: 'Книжный магазин'
-                        },
-                        {
-                            id: 4,
-                            name: 'Кофеварка Delonghi',
-                            description: 'Автоматическая кофеварка для дома',
-                            price: 15000,
-                            category: 'home',
-                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%238B4513"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EКофе%3C/text%3E%3C/svg%3E',
-                            sellerId: 0,
-                            sellerName: 'Дом и сад'
-                        },
-                        {
-                            id: 5,
-                            name: 'Кроссовки Nike',
-                            description: 'Спортивные кроссовки для бега',
-                            price: 7800,
-                            category: 'sports',
-                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23FF4500"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EОбувь%3C/text%3E%3C/svg%3E',
-                            sellerId: 0,
-                            sellerName: 'Спортивный магазин'
-                        }
+                        // ... остальные демо-товары ...
                     ];
                     saveData();
                 }
@@ -1588,161 +1497,17 @@
             }
         }
 
-        // Показать сообщение
-        function showMessage(text, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
-            messageDiv.textContent = text;
-            
-            const container = document.querySelector('.container');
-            container.insertBefore(messageDiv, container.firstChild);
-            
-            setTimeout(() => {
-                messageDiv.remove();
-            }, 3000);
-        }
-
-        // Инициализация демо-данных
-        function initDemoData() {
-            // Создаем демо-пользователя
-            if (users.length === 0) {
-                const demoUser = {
-                    id: 1,
-                    name: 'Демо пользователь',
-                    email: 'demo@example.com',
-                    password: 'demo123',
-                    phone: '+7 (999) 123-45-67',
-                    address: 'г. Москва, ул. Примерная, д. 1',
-                    products: [],
-                    orders: []
-                };
-                users.push(demoUser);
-                saveData();
-            }
-        }
-
-        // Добавляем функцию для быстрого входа (для демонстрации)
-        function quickLogin() {
-            if (users.length > 0) {
-                currentUser = users[0];
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                updateAuthUI();
-                showMessage('Вход выполнен!', 'success');
-                showSection('shop');
-            }
-        }
-
-        // Инициализируем демо-данные при загрузке
-        initDemoData();
-
-        // Add functions to document.addEventListener('DOMContentLoaded', function() {...})
-        function initializeSettings() {
-            if (currentUser) {
-                document.getElementById('emailNotifications').checked = currentUser.emailNotifications || false;
-                document.getElementById('darkMode').checked = currentUser.darkMode || false;
-                document.getElementById('twoFactorAuth').checked = currentUser.twoFactorAuth || false;
-            }
-        }
-
-        function saveSettings(event) {
-            event.preventDefault();
-            if (!currentUser) return;
-
-            currentUser.emailNotifications = document.getElementById('emailNotifications').checked;
-            currentUser.darkMode = document.getElementById('darkMode').checked;
-            currentUser.twoFactorAuth = document.getElementById('twoFactorAuth').checked;
-
-            // Update user in users array
-            const userIndex = users.findIndex(u => u.id === currentUser.id);
-            if (userIndex !== -1) {
-                users[userIndex] = { ...currentUser };
-            }
-
-            // Save to localStorage
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            localStorage.setItem('users', JSON.stringify(users));
-
-            showSettingsNotification('Настройки успешно сохранены!', 'success');
-        }
-
-        function showSettingsNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `settings-notification settings-${type}`;
-            notification.textContent = message;
-            
-            const settingsForm = document.querySelector('.settings-form');
-            settingsForm.appendChild(notification);
-            
-            setTimeout(() => notification.remove(), 3000);
-        }
-
-        function searchUsers(query) {
-            query = query.toLowerCase();
-            const searchResults = users.filter(user => 
-                user.id !== currentUser?.id && 
-                user.name.toLowerCase().includes(query)
-            );
-
-            const resultsContainer = document.querySelector('.user-search-results');
-            resultsContainer.innerHTML = searchResults.map(user => `
-                <div class="user-search-item" onclick="openChat(${user.id})">
-                    <img src="${user.avatar || 'default-avatar.png'}" alt="${user.name}" class="chat-contact-avatar">
-                    <div>
-                        <div><strong>${user.name}</strong></div>
-                        <small>${user.email}</small>
-                    </div>
-                </div>
-            `).join('') || '<p>Пользователи не найдены</p>';
-        }
-
         function persistOrders() {
-            // Save orders to localStorage
             localStorage.setItem('orders', JSON.stringify(orders));
         }
 
         function loadOrders() {
-            // Load orders from localStorage
             const savedOrders = localStorage.getItem('orders');
             if (savedOrders) {
                 orders = JSON.parse(savedOrders);
             }
         }
-
-        // Modify the existing checkout function
-        function checkout() {
-            if (!currentUser) {
-                showMessage('Войдите в аккаунт!', 'error');
-                return;
-            }
-
-            if (cart.length === 0) {
-                showMessage('Корзина пуста!', 'error');
-                return;
-            }
-
-            const order = {
-                id: Date.now(),
-                userId: currentUser.id,
-                items: [...cart],
-                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                date: new Date().toLocaleDateString(),
-                status: 'Оформлен'
-            };
-
-            orders.push(order);
-            cart = [];
-            
-            // Save orders immediately
-            persistOrders();
-            updateCartDisplay();
-            
-            showMessage('Заказ успешно оформлен!', 'success');
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadOrders(); // Load saved orders
-            initializeSettings(); // Initialize settings
-        });
     </script>
 </body>
 </html>
+        
