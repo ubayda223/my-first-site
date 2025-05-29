@@ -11,67 +11,35 @@
             box-sizing: border-box;
         }
 
-        /* Улучшенные градиенты и цвета */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: #2A2B3A;
+            color: #333;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            animation: fadeIn 0.8s ease-out;
         }
 
         .header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            padding: 1.5rem 2.5rem;
-            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 15px;
             margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transform: translateZ(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            will-change: transform;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-
-        .header:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #6B73FF, #000DFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .logo:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #6B73FF, #000DFF);
-            transition: width 0.4s ease;
-        }
-
-        .logo:hover:after {
-            width: 100%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
         }
 
         .nav-buttons {
@@ -80,99 +48,50 @@
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 0.7rem 1.5rem;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.95rem;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.6s;
-        }
-
-        .btn:hover:before {
-            left: 100%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #6B73FF, #000DFF);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            box-shadow: 0 4px 15px rgba(107, 115, 255, 0.3);
-            transform: translateY(0);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(107, 115, 255, 0.5);
         }
 
         .btn-secondary {
-            background: rgba(107, 115, 255, 0.1);
-            color: #6B73FF;
-            border: 2px solid #6B73FF;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .section {
             display: none;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transform: translateZ(0);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeIn 0.6s ease-out;
         }
 
         .section.active {
             display: block;
-            animation: sectionFadeIn 0.6s ease forwards;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .form-group {
@@ -188,18 +107,16 @@
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             border: 2px solid #e1e5e9;
-            border-radius: 15px;
+            border-radius: 10px;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: #6B73FF;
-            box-shadow: 0 0 0 3px rgba(107, 115, 255, 0.2);
-            transform: translateY(-2px);
+            outline: none;
+            border-color: #667eea;
         }
 
         .products-grid {
@@ -210,30 +127,27 @@
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: scale(1);
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
-            transition: all 0.5s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.1) rotate(2deg);
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
         }
 
         .product-info {
@@ -268,14 +182,6 @@
             border: 1px solid #e1e5e9;
             border-radius: 10px;
             margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-            animation: slideIn 0.4s ease-out;
-        }
-
-        .cart-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .cart-item img {
@@ -375,9 +281,6 @@
             border-radius: 10px;
             margin-bottom: 1rem;
             text-align: center;
-            animation: slideDown 0.5s ease forwards;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .error-message {
@@ -387,56 +290,28 @@
             border-radius: 10px;
             margin-bottom: 1rem;
             text-align: center;
-            animation: slideDown 0.5s ease forwards;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .image-fallback {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
         }
 
-        /* Добавляем прелоадер */
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 5px solid #6B73FF;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+        .image-loading {
+            animation: imageLoading 1s infinite;
+            background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+            background-size: 200% 100%;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Улучшенный скроллбар */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #6B73FF, #000DFF);
-            border-radius: 10px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #000DFF, #6B73FF);
+        @keyframes imageLoading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         @media (max-width: 768px) {
@@ -815,8 +690,32 @@
             products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+                
+                // Create image with fallback
+                const img = new Image();
+                const fallback = `
+                    <div class="image-fallback">
+                        <span>🖼️ ${product.name}</span>
+                    </div>
+                `;
+                
+                img.onload = function() {
+                    productCard.querySelector('.product-image').innerHTML = '';
+                    productCard.querySelector('.product-image').appendChild(img);
+                };
+                
+                img.onerror = function() {
+                    productCard.querySelector('.product-image').innerHTML = fallback;
+                };
+                
+                img.src = product.image;
+                img.alt = product.name;
+                img.className = 'product-image';
+
                 productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-image image-loading">
+                        ${fallback}
+                    </div>
                     <div class="product-info">
                         <div class="product-title">${product.name}</div>
                         <div class="product-price">${product.price} руб.</div>
@@ -1051,15 +950,11 @@
                 products,
                 orders
             };
-            
-            try {
-                Object.keys(data).forEach(key => {
-                    localStorage.setItem(key, JSON.stringify(data[key]));
-                });
-            } catch (error) {
-                console.error('Ошибка сохранения:', error);
-                showMessage('Не удалось сохранить изменения', 'error');
-            }
+            // В реальном приложении здесь была бы отправка на сервер
+            // Для демонстрации сохраняем в localStorage
+            Object.keys(data).forEach(key => {
+                localStorage.setItem(key, JSON.stringify(data[key]));
+            });
         }
 
         // Загрузка данных
@@ -1078,7 +973,7 @@
                             description: 'Новый смартфон с отличной камерой и долгим временем работы',
                             price: 25000,
                             category: 'electronics',
-                            image: 'https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=Samsung',
+                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%234A90E2"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EТелефон%3C/text%3E%3C/svg%3E',
                             sellerId: 0,
                             sellerName: 'Магазин техники'
                         },
@@ -1088,7 +983,7 @@
                             description: 'Классические джинсы высокого качества',
                             price: 4500,
                             category: 'clothing',
-                            image: 'https://via.placeholder.com/200x200/50C878/FFFFFF?text=Jeans',
+                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%2350C878"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EДжинсы%3C/text%3E%3C/svg%3E',
                             sellerId: 0,
                             sellerName: 'Модный бутик'
                         },
@@ -1098,7 +993,7 @@
                             description: 'Учебник по современному программированию',
                             price: 1200,
                             category: 'books',
-                            image: 'https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=Book',
+                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23FF6B6B"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EКнига%3C/text%3E%3C/svg%3E',
                             sellerId: 0,
                             sellerName: 'Книжный магазин'
                         },
@@ -1108,7 +1003,7 @@
                             description: 'Автоматическая кофеварка для дома',
                             price: 15000,
                             category: 'home',
-                            image: 'https://via.placeholder.com/200x200/8B4513/FFFFFF?text=Coffee',
+                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%238B4513"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EКофе%3C/text%3E%3C/svg%3E',
                             sellerId: 0,
                             sellerName: 'Дом и сад'
                         },
@@ -1118,7 +1013,7 @@
                             description: 'Спортивные кроссовки для бега',
                             price: 7800,
                             category: 'sports',
-                            image: 'https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Nike',
+                            image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23FF4500"/%3E%3Ctext x="50%25" y="50%25" fill="white" text-anchor="middle" dy=".3em"%3EОбувь%3C/text%3E%3C/svg%3E',
                             sellerId: 0,
                             sellerName: 'Спортивный магазин'
                         }
@@ -1127,12 +1022,9 @@
                 }
             } catch (error) {
                 console.error('Ошибка загрузки данных:', error);
-                showMessage('Произошла ошибка при загрузке данных. Пробуем восстановить...', 'error');
-                
-                // Повторная попытка через 3 секунды
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000);
+                users = [];
+                products = [];
+                orders = [];
             }
         }
 
@@ -1182,105 +1074,6 @@
 
         // Инициализируем демо-данные при загрузке
         initDemoData();
-
-        // Добавим обработку сетевых ошибок после существующего кода
-        window.addEventListener('error', function(e) {
-            if (e.message.includes('net::')) {
-                showMessage('Ошибка сети. Пожалуйста, проверьте подключение.', 'error');
-            }
-        });
-
-        // Улучшаем загрузку данных
-        function loadData() {
-            try {
-                users = JSON.parse(localStorage.getItem('users')) || [];
-                products = JSON.parse(localStorage.getItem('products')) || [];
-                orders = JSON.parse(localStorage.getItem('orders')) || [];
-                
-                // Добавляем несколько демо-товаров при первом запуске
-                if (products.length === 0) {
-                    products = [
-                        {
-                            id: 1,
-                            name: 'Смартфон Samsung Galaxy',
-                            description: 'Новый смартфон с отличной камерой и долгим временем работы',
-                            price: 25000,
-                            category: 'electronics',
-                            image: 'https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=Samsung',
-                            sellerId: 0,
-                            sellerName: 'Магазин техники'
-                        },
-                        {
-                            id: 2,
-                            name: 'Джинсы Levi\'s',
-                            description: 'Классические джинсы высокого качества',
-                            price: 4500,
-                            category: 'clothing',
-                            image: 'https://via.placeholder.com/200x200/50C878/FFFFFF?text=Jeans',
-                            sellerId: 0,
-                            sellerName: 'Модный бутик'
-                        },
-                        {
-                            id: 3,
-                            name: 'Книга "Программирование"',
-                            description: 'Учебник по современному программированию',
-                            price: 1200,
-                            category: 'books',
-                            image: 'https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=Book',
-                            sellerId: 0,
-                            sellerName: 'Книжный магазин'
-                        },
-                        {
-                            id: 4,
-                            name: 'Кофеварка Delonghi',
-                            description: 'Автоматическая кофеварка для дома',
-                            price: 15000,
-                            category: 'home',
-                            image: 'https://via.placeholder.com/200x200/8B4513/FFFFFF?text=Coffee',
-                            sellerId: 0,
-                            sellerName: 'Дом и сад'
-                        },
-                        {
-                            id: 5,
-                            name: 'Кроссовки Nike',
-                            description: 'Спортивные кроссовки для бега',
-                            price: 7800,
-                            category: 'sports',
-                            image: 'https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Nike',
-                            sellerId: 0,
-                            sellerName: 'Спортивный магазин'
-                        }
-                    ];
-                    saveData();
-                }
-            } catch (error) {
-                console.error('Ошибка загрузки данных:', error);
-                showMessage('Произошла ошибка при загрузке данных. Пробуем восстановить...', 'error');
-                
-                // Повторная попытка через 3 секунды
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000);
-            }
-        }
-
-        // Улучшаем сохранение данных
-        function saveData() {
-            const data = {
-                users,
-                products,
-                orders
-            };
-            
-            try {
-                Object.keys(data).forEach(key => {
-                    localStorage.setItem(key, JSON.stringify(data[key]));
-                });
-            } catch (error) {
-                console.error('Ошибка сохранения:', error);
-                showMessage('Не удалось сохранить изменения', 'error');
-            }
-        }
     </script>
 </body>
 </html>
