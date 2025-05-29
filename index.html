@@ -491,6 +491,50 @@
             margin-top: 2px;
         }
 
+        .profile-buttons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-sell-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-sell-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .settings-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+        }
+
+        .settings-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+
+        .settings-option label {
+            font-size: 1rem;
+            color: #555;
+        }
+
         /* Add before closing </head> */
     </style>
 </head>
@@ -691,13 +735,25 @@
                             <label for="updateAddress">Адрес:</label>
                             <textarea id="updateAddress" rows="3"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="updatePassword">Новый пароль:</label>
-                            <input type="password" id="updatePassword">
+                        <div class="settings-option">
+                            <input type="checkbox" id="emailNotifications">
+                            <label for="emailNotifications">Получать уведомления на email</label>
+                        </div>
+                        <div class="settings-option">
+                            <input type="checkbox" id="darkMode">
+                            <label for="darkMode">Тёмная тема</label>
+                        </div>
+                        <div class="settings-option">
+                            <input type="checkbox" id="twoFactorAuth">
+                            <label for="twoFactorAuth">Двухфакторная аутентификация</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                     </form>
                 </div>
+            </div>
+
+            <div class="profile-buttons">
+                <button class="profile-sell-btn" onclick="showSection('sell')">Начать продавать</button>
             </div>
         </section>
     </div>
