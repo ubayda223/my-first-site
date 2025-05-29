@@ -651,7 +651,40 @@
             transform: translateX(26px);
         }
 
-        /* Add before closing </head> */
+        /* Add after your existing sections */
+        section id="chat" class="section">
+            <h2>Сообщения</h2>
+            <div class="chat-page">
+                <div class="chat-sidebar">
+                    <div class="search-container">
+                        <input type="text" 
+                               id="userSearchInput" 
+                               placeholder="Поиск пользователей..." 
+                               oninput="searchUsers(this.value)">
+                    </div>
+                    <div class="user-search-results"></div>
+                    <div id="chatContactsList"></div>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-messages-container" id="chatMessagesContainer"></div>
+                    <div class="chat-input-container">
+                        <input type="text" 
+                               id="chatMessageInput" 
+                               placeholder="Введите сообщение...">
+                        <button class="btn btn-primary" onclick="sendMessage()">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add to the navigation buttons -->
+        <button class="btn btn-secondary" onclick="showSection('chat')">Чат</button>
+
+        <!-- Modify the settings form to include onsubmit -->
+        <form id="settingsForm" class="settings-form" onsubmit="saveSettings(event)">
+            <!-- ...existing settings inputs... -->
+        </form>
+
     </style>
 </head>
 <body>
@@ -838,7 +871,7 @@
                 </div>
                 
                 <div id="settingsTab" class="tab-content" style="display: none;">
-                    <form id="settingsForm" class="settings-form" onsubmit="updateProfile(event)">
+                    <form id="settingsForm" class="settings-form" onsubmit="saveSettings(event)">
                         <div class="form-group">
                             <label for="updateName">Имя:</label>
                             <input type="text" id="updateName">
@@ -920,39 +953,6 @@
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.getElementById(sectionName).classList.add('active');
-            
-            if (sectionName === 'profile' && currentUser) {
-                loadUserProfile();
-            }
-        }
-
-        // Регистрация
-        function register(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('regName').value;
-            const email = document.getElementById('regEmail').value;
-            const password = document.getElementById('regPassword').value;
-            const phone = document.getElementById('regPhone').value;
-            const address = document.getElementById('regAddress').value;
-
-            // Проверка на существующего пользователя
-            if (users.find(user => user.email === email)) {
-                showMessage('Пользователь с таким email уже существует!', 'error');
-                return;
-            }
-
-            const newUser = {
-                id: Date.now(),
-                name,
-                email,
-                password,
-                phone,
-                address,
-                products: [],
-                orders: []
-            };
 
             users.push(newUser);
             saveData();
