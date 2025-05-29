@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Улучшенные градиенты и цвета */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            min-height: 100vh;
+            color: #2A2B3A;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: translateZ(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .header:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6B73FF, #000DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .logo:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #6B73FF, #000DFF);
+            transition: width 0.4s ease;
+        }
+
+        .logo:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #6B73FF, #000DFF);
+            color: white;
+            box-shadow: 0 4px 15px rgba(107, 115, 255, 0.3);
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(107, 115, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(107, 115, 255, 0.1);
+            color: #6B73FF;
+            border: 2px solid #6B73FF;
+        }
+
+        .section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateZ(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .section.active {
+            display: block;
+            animation: sectionFadeIn 0.6s ease forwards;
+        }
+
+        @keyframes sectionFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #6B73FF;
+            box-shadow: 0 0 0 3px rgba(107, 115, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .product-seller {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .cart-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-display {
+            padding: 0.8rem;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            text-align: center;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-display:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .preview-image {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 1rem;
+            border-radius: 10px;
+        }
+
+        .user-info {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cart-badge {
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-align: right;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #e1e5e9;
+        }
+
+        .success-message {
+            background: #2ed573;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: slideDown 0.5s ease forwards;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-message {
+            background: #ff4757;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: slideDown 0.5s ease forwards;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Добавляем прелоадер */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #6B73FF;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Улучшенный скроллбар */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #6B73FF, #000DFF);
+            border-radius: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #000DFF, #6B73FF);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">🛍️ Мой Магазин</div>
+            <nav class="nav-buttons">
+                <button class="btn btn-secondary" onclick="showSection('shop')">Магазин</button>
+                <button class="btn btn-secondary" onclick="showSection('cart')">
+                    Корзина <span class="cart-badge" id="cartCount">0</span>
+                </button>
+                <div id="authButtons">
+                    <button class="btn btn-secondary" onclick="showSection('login')">Войти</button>
+                    <button class="btn btn-primary" onclick="showSection('register')">Регистрация</button>
+                </div>
+                <div id="userMenu" style="display: none;">
+                    <button class="btn btn-secondary" onclick="showSection('sell')">Продать товар</button>
+                    <button class="btn btn-secondary" onclick="showSection('profile')">Профиль</button>
+                    <button class="btn btn-secondary" onclick="logout()">Выйти</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Секция регистрации -->
+        <section id="register" class="section">
+            <h2>Регистрация</h2>
+            <form id="registerForm" onsubmit="register(event)">
+                <div class="form-group">
+                    <label for="regName">Имя:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Пароль:</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Телефон:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regAddress">Адрес:</label>
+                    <textarea id="regAddress" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </form>
+        </section>
+
+        <!-- Секция входа -->
+        <section id="login" class="section">
+            <h2>Вход</h2>
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Пароль:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+        </section>
+
+        <!-- Секция магазина -->
+        <section id="shop" class="section active">
+            <h2>Товары</h2>
+            <div class="form-group">
+                <input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="filterProducts()">
+            </div>
+            <div class="form-group">
+                <select id="categoryFilter" onchange="filterProducts()">
+                    <option value="">Все категории</option>
+                    <option value="electronics">Электроника</option>
+                    <option value="clothing">Одежда</option>
+                    <option value="books">Книги</option>
+                    <option value="home">Для дома</option>
+                    <option value="sports">Спорт</option>
+                </select>
+            </div>
+            <div id="productsContainer" class="products-grid">
+                <!-- Товары будут загружены здесь -->
+            </div>
+        </section>
+
+        <!-- Секция продажи товара -->
+        <section id="sell" class="section">
+            <h2>Продать товар</h2>
+            <form id="sellForm" onsubmit="addProduct(event)">
+                <div class="form-group">
+                    <label for="productName">Название товара:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Описание:</label>
+                    <textarea id="productDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Цена (руб.):</label>
+                    <input type="number" id="productPrice" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Категория:</label>
+                    <select id="productCategory" required>
+                        <option value="">Выберите категорию</option>
+                        <option value="electronics">Электроника</option>
+                        <option value="clothing">Одежда</option>
+                        <option value="books">Книги</option>
+                        <option value="home">Для дома</option>
+                        <option value="sports">Спорт</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Фото товара:</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="productImage" class="file-input" accept="image/*" onchange="previewImage(event)">
+                        <div class="file-input-display">
+                            Нажмите для выбора фото
+                        </div>
+                    </div>
+                    <img id="imagePreview" class="preview-image" style="display: none;">
+                </div>
+                <button type="submit" class="btn btn-primary">Добавить товар</button>
+            </form>
+        </section>
+
+        <!-- Секция корзины -->
+        <section id="cart" class="section">
+            <h2>Корзина</h2>
+            <div id="cartItems">
+                <!-- Товары в корзине будут здесь -->
+            </div>
+            <div class="total-price" id="totalPrice">Итого: 0 руб.</div>
+            <button class="btn btn-primary" onclick="checkout()" id="checkoutBtn" style="display: none;">Оформить заказ</button>
+        </section>
+
+        <!-- Секция профиля -->
+        <section id="profile" class="section">
+            <h2>Профиль пользователя</h2>
+            <div id="userInfo" class="user-info">
+                <!-- Информация о пользователе будет здесь -->
+            </div>
+            <h3>Мои товары</h3>
+            <div id="myProducts" class="products-grid">
+                <!-- Товары пользователя будут здесь -->
+            </div>
+            <h3>Мои заказы</h3>
+            <div id="myOrders">
+                <!-- Заказы пользователя будут здесь -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        let currentUser = null;
+        let products = [];
+        let cart = [];
+        let users = [];
+        let orders = [];
+
+        // Инициализация приложения
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            checkAuth();
+            loadProducts();
+            updateCartDisplay();
+        });
+
+        // Управление секциями
+        function showSection(sectionName) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionName).classList.add('active');
+            
+            if (sectionName === 'profile' && currentUser) {
+                loadUserProfile();
+            }
+        }
+
+        // Регистрация
+        function register(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const phone = document.getElementById('regPhone').value;
+            const address = document.getElementById('regAddress').value;
+
+            // Проверка на существующего пользователя
+            if (users.find(user => user.email === email)) {
+                showMessage('Пользователь с таким email уже существует!', 'error');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                phone,
+                address,
+                products: [],
+                orders: []
+            };
+
+            users.push(newUser);
+            saveData();
+            
+            showMessage('Регистрация успешна! Теперь вы можете войти.', 'success');
+            document.getElementById('registerForm').reset();
+            showSection('login');
+        }
+
+        // Авторизация
+        function login(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                updateAuthUI();
+                showMessage('Добро пожаловать!', 'success');
+                showSection('shop');
+            } else {
+                showMessage('Неверный email или пароль!', 'error');
+            }
+            
+            document.getElementById('loginForm').reset();
+        }
+
+        // Выход
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            cart = [];
+            updateAuthUI();
+            updateCartDisplay();
+            showSection('shop');
+            showMessage('Вы вышли из аккаунта', 'success');
+        }
+
+        // Проверка авторизации
+        function checkAuth() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateAuthUI();
+            }
+        }
+
+        // Обновление интерфейса авторизации
+        function updateAuthUI() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            
+            if (currentUser) {
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'flex';
+            } else {
+                authButtons.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        // Добавление товара
+        function addProduct(event) {
+            event.preventDefault();
+            
+            if (!currentUser) {
+                showMessage('Войдите в аккаунт для продажи товаров!', 'error');
+                return;
+            }
+
+            const name = document.getElementById('productName').value;
+            const description = document.getElementById('productDescription').value;
+            const price = parseInt(document.getElementById('productPrice').value);
+            const category = document.getElementById('productCategory').value;
+            const imageFile = document.getElementById('productImage').files[0];
+
+            let imageUrl = 'https://via.placeholder.com/200x200?text=Нет+фото';
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newProduct = {
+                        id: Date.now(),
+                        name,
+                        description,
+                        price,
+                        category,
+                        image: e.target.result,
+                        sellerId: currentUser.id,
+                        sellerName: currentUser.name
+                    };
+
+                    products.push(newProduct);
+                    saveData();
+                    loadProducts();
+                    showMessage('Товар успешно добавлен!', 'success');
+                    document.getElementById('sellForm').reset();
+                    document.getElementById('imagePreview').style.display = 'none';
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                const newProduct = {
+                    id: Date.now(),
+                    name,
+                    description,
+                    price,
+                    category,
+                    image: imageUrl,
+                    sellerId: currentUser.id,
+                    sellerName: currentUser.name
+                };
+
+                products.push(newProduct);
+                saveData();
+                loadProducts();
+                showMessage('Товар успешно добавлен!', 'success');
+                document.getElementById('sellForm').reset();
+            }
+        }
+
+        // Предварительный просмотр изображения
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('imagePreview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Загрузка товаров
+        function loadProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+
+            if (products.length === 0) {
+                container.innerHTML = '<p>Товаров пока нет. Станьте первым продавцом!</p>';
+                return;
+            }
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">${product.price} руб.</div>
+                        <div class="product-seller">Продавец: ${product.sellerName}</div>
+                        <p>${product.description}</p>
+                        <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                            В корзину
+                        </button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        // Фильтрация товаров
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            
+            const filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !category || product.category === category;
+                
+                return matchesSearch && matchesCategory;
+            });
+
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+
+            if (filteredProducts.length === 0) {
+                container.innerHTML = '<p>Товары не найдены</p>';
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">${product.price} руб.</div>
+                        <div class="product-seller">Продавец: ${product.sellerName}</div>
+                        <p>${product.description}</p>
+                        <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                            В корзину
+                        </button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        // Добавление в корзину
+        function addToCart(productId) {
+            if (!currentUser) {
+                showMessage('Войдите в аккаунт для покупок!', 'error');
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            updateCartDisplay();
+            showMessage('Товар добавлен в корзину!', 'success');
+        }
+
+        // Обновление отображения корзины
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const totalPrice = document.getElementById('totalPrice');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            totalPrice.textContent = `Итого: ${total} руб.`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Корзина пуста</p>';
+                checkoutBtn.style.display = 'none';
+            } else {
+                checkoutBtn.style.display = 'block';
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <div class="product-title">${item.name}</div>
+                            <div class="product-price">${item.price} руб.</div>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="btn btn-secondary" onclick="removeFromCart(${item.id})">Удалить</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Изменение количества товара
+        function changeQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        // Удаление из корзины
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        // Оформление заказа
+        function checkout() {
+            if (!currentUser) {
+                showMessage('Войдите в аккаунт!', 'error');
+                return;
+            }
+
+            if (cart.length === 0) {
+                showMessage('Корзина пуста!', 'error');
+                return;
+            }
+
+            const order = {
+                id: Date.now(),
+                userId: currentUser.id,
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                date: new Date().toLocaleDateString(),
+                status: 'Оформлен'
+            };
+
+            orders.push(order);
+            cart = [];
+            saveData();
+            updateCartDisplay();
+            
+            showMessage('Заказ успешно оформлен!', 'success');
+        }
+
+        // Загрузка профиля пользователя
+        function loadUserProfile() {
+            if (!currentUser) return;
+
+            const userInfo = document.getElementById('userInfo');
+            userInfo.innerHTML = `
+                <h3>${currentUser.name}</h3>
+                <p><strong>Email:</strong> ${currentUser.email}</p>
+                <p><strong>Телефон:</strong> ${currentUser.phone}</p>
+                <p><strong>Адрес:</strong> ${currentUser.address}</p>
+            `;
+
+            // Мои товары
+            const myProducts = document.getElementById('myProducts');
+            const userProducts = products.filter(p => p.sellerId === currentUser.id);
+            
+            if (userProducts.length === 0) {
+                myProducts.innerHTML = '<p>У вас пока нет товаров на продажу</p>';
+            } else {
+                myProducts.innerHTML = userProducts.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-info">
+                            <div class="product-title">${product.name}</div>
+                            <div class="product-price">${product.price} руб.</div>
+                            <p>${product.description}</p>
+                            <button class="btn btn-secondary" onclick="deleteProduct(${product.id})">
+                                Удалить
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Мои заказы
+            const myOrders = document.getElementById('myOrders');
+            const userOrders = orders.filter(o => o.userId === currentUser.id);
+            
+            if (userOrders.length === 0) {
+                myOrders.innerHTML = '<p>У вас пока нет заказов</p>';
+            } else {
+                myOrders.innerHTML = userOrders.map(order => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="product-title">Заказ #${order.id}</div>
+                            <div class="product-price">${order.total} руб.</div>
+                            <div class="product-seller">Дата: ${order.date}</div>
+                            <div class="product-seller">Статус: ${order.status}</div>
+                            <div>Товары: ${order.items.map(item => `${item.name} (${item.quantity} шт.)`).join(', ')}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Удаление товара
+        function deleteProduct(productId) {
+            if (confirm('Вы уверены, что хотите удалить этот товар?')) {
+                products = products.filter(p => p.id !== productId);
+                saveData();
+                loadProducts();
+                loadUserProfile();
+                showMessage('Товар удален!', 'success');
+            }
+        }
+
+        // Сохранение данных
+        function saveData() {
+            const data = {
+                users,
+                products,
+                orders
+            };
+            
+            try {
+                Object.keys(data).forEach(key => {
+                    localStorage.setItem(key, JSON.stringify(data[key]));
+                });
+            } catch (error) {
+                console.error('Ошибка сохранения:', error);
+                showMessage('Не удалось сохранить изменения', 'error');
+            }
+        }
+
+        // Загрузка данных
+        function loadData() {
+            try {
+                users = JSON.parse(localStorage.getItem('users')) || [];
+                products = JSON.parse(localStorage.getItem('products')) || [];
+                orders = JSON.parse(localStorage.getItem('orders')) || [];
+                
+                // Добавляем несколько демо-товаров при первом запуске
+                if (products.length === 0) {
+                    products = [
+                        {
+                            id: 1,
+                            name: 'Смартфон Samsung Galaxy',
+                            description: 'Новый смартфон с отличной камерой и долгим временем работы',
+                            price: 25000,
+                            category: 'electronics',
+                            image: 'https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=Samsung',
+                            sellerId: 0,
+                            sellerName: 'Магазин техники'
+                        },
+                        {
+                            id: 2,
+                            name: 'Джинсы Levi\'s',
+                            description: 'Классические джинсы высокого качества',
+                            price: 4500,
+                            category: 'clothing',
+                            image: 'https://via.placeholder.com/200x200/50C878/FFFFFF?text=Jeans',
+                            sellerId: 0,
+                            sellerName: 'Модный бутик'
+                        },
+                        {
+                            id: 3,
+                            name: 'Книга "Программирование"',
+                            description: 'Учебник по современному программированию',
+                            price: 1200,
+                            category: 'books',
+                            image: 'https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=Book',
+                            sellerId: 0,
+                            sellerName: 'Книжный магазин'
+                        },
+                        {
+                            id: 4,
+                            name: 'Кофеварка Delonghi',
+                            description: 'Автоматическая кофеварка для дома',
+                            price: 15000,
+                            category: 'home',
+                            image: 'https://via.placeholder.com/200x200/8B4513/FFFFFF?text=Coffee',
+                            sellerId: 0,
+                            sellerName: 'Дом и сад'
+                        },
+                        {
+                            id: 5,
+                            name: 'Кроссовки Nike',
+                            description: 'Спортивные кроссовки для бега',
+                            price: 7800,
+                            category: 'sports',
+                            image: 'https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Nike',
+                            sellerId: 0,
+                            sellerName: 'Спортивный магазин'
+                        }
+                    ];
+                    saveData();
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                showMessage('Произошла ошибка при загрузке данных. Пробуем восстановить...', 'error');
+                
+                // Повторная попытка через 3 секунды
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        }
+
+        // Показать сообщение
+        function showMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+            messageDiv.textContent = text;
+            
+            const container = document.querySelector('.container');
+            container.insertBefore(messageDiv, container.firstChild);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+
+        // Инициализация демо-данных
+        function initDemoData() {
+            // Создаем демо-пользователя
+            if (users.length === 0) {
+                const demoUser = {
+                    id: 1,
+                    name: 'Демо пользователь',
+                    email: 'demo@example.com',
+                    password: 'demo123',
+                    phone: '+7 (999) 123-45-67',
+                    address: 'г. Москва, ул. Примерная, д. 1',
+                    products: [],
+                    orders: []
+                };
+                users.push(demoUser);
+                saveData();
+            }
+        }
+
+        // Добавляем функцию для быстрого входа (для демонстрации)
+        function quickLogin() {
+            if (users.length > 0) {
+                currentUser = users[0];
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuthUI();
+                showMessage('Вход выполнен!', 'success');
+                showSection('shop');
+            }
+        }
+
+        // Инициализируем демо-данные при загрузке
+        initDemoData();
+
+        // Добавим обработку сетевых ошибок после существующего кода
+        window.addEventListener('error', function(e) {
+            if (e.message.includes('net::')) {
+                showMessage('Ошибка сети. Пожалуйста, проверьте подключение.', 'error');
+            }
+        });
+
+        // Улучшаем загрузку данных
+        function loadData() {
+            try {
+                users = JSON.parse(localStorage.getItem('users')) || [];
+                products = JSON.parse(localStorage.getItem('products')) || [];
+                orders = JSON.parse(localStorage.getItem('orders')) || [];
+                
+                // Добавляем несколько демо-товаров при первом запуске
+                if (products.length === 0) {
+                    products = [
+                        {
+                            id: 1,
+                            name: 'Смартфон Samsung Galaxy',
+                            description: 'Новый смартфон с отличной камерой и долгим временем работы',
+                            price: 25000,
+                            category: 'electronics',
+                            image: 'https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=Samsung',
+                            sellerId: 0,
+                            sellerName: 'Магазин техники'
+                        },
+                        {
+                            id: 2,
+                            name: 'Джинсы Levi\'s',
+                            description: 'Классические джинсы высокого качества',
+                            price: 4500,
+                            category: 'clothing',
+                            image: 'https://via.placeholder.com/200x200/50C878/FFFFFF?text=Jeans',
+                            sellerId: 0,
+                            sellerName: 'Модный бутик'
+                        },
+                        {
+                            id: 3,
+                            name: 'Книга "Программирование"',
+                            description: 'Учебник по современному программированию',
+                            price: 1200,
+                            category: 'books',
+                            image: 'https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=Book',
+                            sellerId: 0,
+                            sellerName: 'Книжный магазин'
+                        },
+                        {
+                            id: 4,
+                            name: 'Кофеварка Delonghi',
+                            description: 'Автоматическая кофеварка для дома',
+                            price: 15000,
+                            category: 'home',
+                            image: 'https://via.placeholder.com/200x200/8B4513/FFFFFF?text=Coffee',
+                            sellerId: 0,
+                            sellerName: 'Дом и сад'
+                        },
+                        {
+                            id: 5,
+                            name: 'Кроссовки Nike',
+                            description: 'Спортивные кроссовки для бега',
+                            price: 7800,
+                            category: 'sports',
+                            image: 'https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Nike',
+                            sellerId: 0,
+                            sellerName: 'Спортивный магазин'
+                        }
+                    ];
+                    saveData();
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                showMessage('Произошла ошибка при загрузке данных. Пробуем восстановить...', 'error');
+                
+                // Повторная попытка через 3 секунды
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        }
+
+        // Улучшаем сохранение данных
+        function saveData() {
+            const data = {
+                users,
+                products,
+                orders
+            };
+            
+            try {
+                Object.keys(data).forEach(key => {
+                    localStorage.setItem(key, JSON.stringify(data[key]));
+                });
+            } catch (error) {
+                console.error('Ошибка сохранения:', error);
+                showMessage('Не удалось сохранить изменения', 'error');
+            }
+        }
+    </script>
+</body>
+</html>
