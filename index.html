@@ -911,6 +911,8 @@
             messages = JSON.parse(localStorage.getItem('messages')) || [];
             displayMessages();
             initChat();
+            loadOrders(); // Load saved orders
+            initializeSettings(); // Initialize settings
         });
 
         // Управление секциями
@@ -1283,7 +1285,9 @@
 
             orders.push(order);
             cart = [];
-            saveData();
+            
+            // Save orders immediately
+            persistOrders();
             updateCartDisplay();
             
             showMessage('Заказ успешно оформлен!', 'success');
@@ -1630,6 +1634,115 @@
 
         // Инициализируем демо-данные при загрузке
         initDemoData();
+
+        // Add functions to document.addEventListener('DOMContentLoaded', function() {...})
+        function initializeSettings() {
+            if (currentUser) {
+                document.getElementById('emailNotifications').checked = currentUser.emailNotifications || false;
+                document.getElementById('darkMode').checked = currentUser.darkMode || false;
+                document.getElementById('twoFactorAuth').checked = currentUser.twoFactorAuth || false;
+            }
+        }
+
+        function saveSettings(event) {
+            event.preventDefault();
+            if (!currentUser) return;
+
+            currentUser.emailNotifications = document.getElementById('emailNotifications').checked;
+            currentUser.darkMode = document.getElementById('darkMode').checked;
+            currentUser.twoFactorAuth = document.getElementById('twoFactorAuth').checked;
+
+            // Update user in users array
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = { ...currentUser };
+            }
+
+            // Save to localStorage
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem('users', JSON.stringify(users));
+
+            showSettingsNotification('Настройки успешно сохранены!', 'success');
+        }
+
+        function showSettingsNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `settings-notification settings-${type}`;
+            notification.textContent = message;
+            
+            const settingsForm = document.querySelector('.settings-form');
+            settingsForm.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function searchUsers(query) {
+            query = query.toLowerCase();
+            const searchResults = users.filter(user => 
+                user.id !== currentUser?.id && 
+                user.name.toLowerCase().includes(query)
+            );
+
+            const resultsContainer = document.querySelector('.user-search-results');
+            resultsContainer.innerHTML = searchResults.map(user => `
+                <div class="user-search-item" onclick="openChat(${user.id})">
+                    <img src="${user.avatar || 'default-avatar.png'}" alt="${user.name}" class="chat-contact-avatar">
+                    <div>
+                        <div><strong>${user.name}</strong></div>
+                        <small>${user.email}</small>
+                    </div>
+                </div>
+            `).join('') || '<p>Пользователи не найдены</p>';
+        }
+
+        function persistOrders() {
+            // Save orders to localStorage
+            localStorage.setItem('orders', JSON.stringify(orders));
+        }
+
+        function loadOrders() {
+            // Load orders from localStorage
+            const savedOrders = localStorage.getItem('orders');
+            if (savedOrders) {
+                orders = JSON.parse(savedOrders);
+            }
+        }
+
+        // Modify the existing checkout function
+        function checkout() {
+            if (!currentUser) {
+                showMessage('Войдите в аккаунт!', 'error');
+                return;
+            }
+
+            if (cart.length === 0) {
+                showMessage('Корзина пуста!', 'error');
+                return;
+            }
+
+            const order = {
+                id: Date.now(),
+                userId: currentUser.id,
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                date: new Date().toLocaleDateString(),
+                status: 'Оформлен'
+            };
+
+            orders.push(order);
+            cart = [];
+            
+            // Save orders immediately
+            persistOrders();
+            updateCartDisplay();
+            
+            showMessage('Заказ успешно оформлен!', 'success');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrders(); // Load saved orders
+            initializeSettings(); // Initialize settings
+        });
     </script>
 </body>
 </html>
