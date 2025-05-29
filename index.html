@@ -424,62 +424,74 @@
             z-index: 1000;
         }
 
-        .chat-window {
+        .chat-list {
             position: fixed;
             bottom: 80px;
             left: 20px;
-            width: 300px;
-            height: 400px;
+            width: 250px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             display: none;
-            flex-direction: column;
             z-index: 1000;
         }
 
-        .chat-header {
-            padding: 1rem;
+        .chat-contact {
+            padding: 10px;
             border-bottom: 1px solid #eee;
-            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
+        .chat-contact:hover {
+            background: #f5f5f5;
+        }
+
+        .chat-contact-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .chat-window {
+            width: 320px;
+            height: 450px;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
 
         .message {
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            max-width: 80%;
+            position: relative;
+            padding: 10px 15px;
+            margin: 5px 0;
         }
 
-        .message.sent {
-            background: #667eea;
-            color: white;
-            margin-left: auto;
+        .message-time {
+            font-size: 0.7em;
+            opacity: 0.7;
+            margin-top: 5px;
         }
 
-        .message.received {
-            background: #f0f0f0;
+        .message-status {
+            font-size: 0.7em;
+            margin-top: 2px;
         }
 
-        .chat-input {
-            padding: 1rem;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-        }
+        /* Add before closing </head> */
     </style>
 </head>
 <body>
@@ -693,6 +705,12 @@
     <div class="theme-switch" onclick="toggleTheme()">🌓</div>
 
     <button class="btn btn-primary chat-button" onclick="toggleChat()">💬</button>
+    <div class="chat-list" id="chatList">
+        <div class="chat-header">
+            <h3>Контакты</h3>
+        </div>
+        <div id="contactsList"></div>
+    </div>
     <div class="chat-window" id="chatWindow">
         <div class="chat-header">Сообщения</div>
         <div class="chat-messages" id="chatMessages"></div>
@@ -720,6 +738,7 @@
             initTheme();
             messages = JSON.parse(localStorage.getItem('messages')) || [];
             displayMessages();
+            initChat();
         });
 
         // Управление секциями
@@ -1176,48 +1195,136 @@
         }
 
         // Chat functions
-        function toggleChat() {
+        function initChat() {
+            if (!messages) messages = [];
+            initChatData();
+            displayContacts();
+        }
+
+        function initChatData() {
+            // Initialize chat data structure
+            if (!localStorage.getItem('chats')) {
+                localStorage.setItem('chats', JSON.stringify({}));
+            }
+        }
+
+        function displayContacts() {
+            if (!currentUser) return;
+            
+            const contactsList = document.getElementById('contactsList');
+            const sellerIds = [...new Set(products.map(p => p.sellerId))];
+            
+            const contacts = users.filter(user => 
+                user.id !== currentUser.id && 
+                (sellerIds.includes(user.id) || hasChat(currentUser.id, user.id))
+            );
+
+            contactsList.innerHTML = contacts.map(contact => `
+                <div class="chat-contact" onclick="openChat(${contact.id})">
+                    <img src="${contact.avatar || 'data:image/svg+xml,%3Csvg...'}" 
+                         class="chat-contact-avatar" 
+                         alt="${contact.name}">
+                    <div>
+                        <div><strong>${contact.name}</strong></div>
+                        <small>${contact.email}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function hasChat(userId1, userId2) {
+            const chats = JSON.parse(localStorage.getItem('chats')) || {};
+            const chatId = getChatId(userId1, userId2);
+            return !!chats[chatId];
+        }
+
+        function getChatId(userId1, userId2) {
+            return [userId1, userId2].sort().join('-');
+        }
+
+        function openChat(userId) {
+            const recipient = users.find(u => u.id === userId);
+            if (!recipient) return;
+
             const chatWindow = document.getElementById('chatWindow');
-            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+            const chatId = getChatId(currentUser.id, userId);
+            
+            chatWindow.dataset.chatId = chatId;
+            chatWindow.style.display = 'flex';
+            
+            document.querySelector('.chat-header').innerHTML = `
+                <img src="${recipient.avatar || 'data:image/svg+xml,%3Csvg...'}" alt="${recipient.name}">
+                <div>
+                    <strong>${recipient.name}</strong>
+                    <div><small>${recipient.email}</small></div>
+                </div>
+            `;
+            
+            loadChatMessages(chatId);
+        }
+
+        function loadChatMessages(chatId) {
+            const chats = JSON.parse(localStorage.getItem('chats')) || {};
+            const messages = chats[chatId] || [];
+            
+            displayMessages(messages);
         }
 
         function sendMessage() {
             const input = document.getElementById('messageInput');
             const text = input.value.trim();
+            const chatWindow = document.getElementById('chatWindow');
+            const chatId = chatWindow.dataset.chatId;
             
-            if (text && currentUser) {
+            if (text && currentUser && chatId) {
                 const message = {
                     id: Date.now(),
                     text,
                     sender: currentUser.id,
-                    senderName: currentUser.name,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    status: 'sent'
                 };
                 
-                messages.push(message);
-                localStorage.setItem('messages', JSON.stringify(messages));
-                displayMessages();
+                const chats = JSON.parse(localStorage.getItem('chats')) || {};
+                if (!chats[chatId]) chats[chatId] = [];
+                
+                chats[chatId].push(message);
+                localStorage.setItem('chats', JSON.stringify(chats));
+                
                 input.value = '';
+                loadChatMessages(chatId);
             }
         }
 
-        function handleMessageKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function displayMessages() {
+        function displayMessages(messages) {
             const chatMessages = document.getElementById('chatMessages');
+            
             chatMessages.innerHTML = messages.map(msg => `
                 <div class="message ${msg.sender === currentUser?.id ? 'sent' : 'received'}">
-                    <div class="message-sender">${msg.sender === currentUser?.id ? 'Вы' : msg.senderName}</div>
                     <div class="message-text">${msg.text}</div>
-                    <div class="message-time">${new Date(msg.timestamp).toLocaleTimeString()}</div>
+                    <div class="message-time">
+                        ${new Date(msg.timestamp).toLocaleString()}
+                    </div>
+                    ${msg.sender === currentUser?.id ? `
+                        <div class="message-status">${msg.status}</div>
+                    ` : ''}
                 </div>
             `).join('');
             
             chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function toggleChat() {
+            const chatList = document.getElementById('chatList');
+            const chatWindow = document.getElementById('chatWindow');
+            
+            if (chatList.style.display === 'none') {
+                chatList.style.display = 'block';
+                chatWindow.style.display = 'none';
+                displayContacts();
+            } else {
+                chatList.style.display = 'none';
+            }
         }
 
         // Сохранение данных
